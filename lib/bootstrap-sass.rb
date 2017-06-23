@@ -59,7 +59,7 @@ module Bootstrap
     def configure_sass
       require 'sass'
 
-      ::Sass.load_paths << stylesheets_path
+      ENV["SASS_PATH"] = [ENV["SASS_PATH"], stylesheets_path].join(File::PATH_SEPARATOR)
 
       # bootstrap requires minimum precision of 8, see https://github.com/twbs/bootstrap-sass/issues/409
       ::Sass::Script::Number.precision = [8, ::Sass::Script::Number.precision].max
